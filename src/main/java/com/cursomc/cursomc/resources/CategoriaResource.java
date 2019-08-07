@@ -16,7 +16,7 @@ import com.cursomc.services.CategoriaService;
 @RequestMapping(value = "/categorias")
 public class CategoriaResource {
 
-	
+@Autowired	
 private CategoriaService service;	
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.GET)
