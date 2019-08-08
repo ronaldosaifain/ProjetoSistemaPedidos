@@ -23,4 +23,14 @@ public Categoria buscar(Integer id) {
 	
 	
 }
+
+public Categoria insert(Categoria obj) {
+	
+	obj.setId(null);
+	return repo.save(obj);
+	
+	
+}
+
+
 }
