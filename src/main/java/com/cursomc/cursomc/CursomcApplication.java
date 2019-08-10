@@ -43,7 +43,7 @@ import com.cursomc.repository.ProdutoRepository;
 @ComponentScan("com.cursomc.services.exceptions")
 
 @EnableJpaRepositories("com.cursomc.repository")
-public class CursomcApplication implements CommandLineRunner {
+public class CursomcApplication implements  CommandLineRunner {
 
 	@Autowired
 	private CategoriaRepository categoriaRepository;
