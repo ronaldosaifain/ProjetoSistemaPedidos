@@ -1,14 +1,15 @@
 package com.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
-import com.cursomc.service.exceptions.*;
 import com.cursomc.domain.Categoria;
 import com.cursomc.repository.CategoriaRepository;
+import com.cursomc.service.exceptions.ObjectNotFoundException;
 
 @Service
 public class CategoriaService {
@@ -34,6 +35,12 @@ public class CategoriaService {
 		find(obj.getId());
 		return repo.save(obj);
 
+	}
+	
+	public List<Categoria> findAll() {
+	
+		return repo.findAll();
+		
 	}
 
 	public void delete(Integer id) {
