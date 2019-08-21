@@ -36,6 +36,9 @@ public class PedidoService {
 	
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private EmailService emailService;
 
 	public Pedido find(Integer id) {
 
@@ -66,7 +69,7 @@ public class PedidoService {
 			ip.SetPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		System.out.println(obj);
+		emailService.SendOrderConfimationEmail(obj);
 		return obj;
 		
 	}
