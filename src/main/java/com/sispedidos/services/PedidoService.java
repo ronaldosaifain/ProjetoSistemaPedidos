@@ -69,7 +69,7 @@ public class PedidoService {
 			ip.SetPedido(obj);
 		}
 		itemPedidoRepository.saveAll(obj.getItens());
-		emailService.SendOrderConfimationEmail(obj);
+		emailService.sendOrderConfirmationHtmlEmail(obj);
 		return obj;
 		
 	}
