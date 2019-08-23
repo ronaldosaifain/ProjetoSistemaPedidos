@@ -5,7 +5,6 @@ import java.io.Serializable;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
-
 import org.hibernate.validator.constraints.Length;
 
 import com.sispedidos.services.validation.ClienteInsert;
@@ -18,30 +17,34 @@ public class ClienteNewDTO implements Serializable {
 	@NotEmpty(message = "Preencimento obrigatorio")
 	@Length(min = 5, max = 150, message = "O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
-	
+
 	@NotEmpty(message = "Preencimento obrigatorio")
 	@Email(message = "Email invalido")
 	private String email;
-	
+
 	@NotEmpty(message = "Preencimento obrigatorio")
 	private String cpfoucnpj;
-	
+
 	private Integer tipo;
-	
+
 	@NotEmpty(message = "Preencimento obrigatorio")
 	private String logradouro;
-	
+
 	@NotEmpty(message = "Preencimento obrigatorio")
 	private String numero;
-	
+
 	private String complemento;
-	
+
 	private String bairro;
-	
+
 	private String cep;
 
 	@NotEmpty(message = "Preencimento obrigatorio")
+	private String senha;
+
+	@NotEmpty(message = "Preencimento obrigatorio")
 	private String telefone1;
+
 	private String telefone2;
 	private String telefone3;
 
@@ -81,6 +84,14 @@ public class ClienteNewDTO implements Serializable {
 
 	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getLogradouro() {
