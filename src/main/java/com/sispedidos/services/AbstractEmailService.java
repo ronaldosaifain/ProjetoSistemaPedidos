@@ -15,6 +15,7 @@ import org.thymeleaf.context.Context;
 
 import com.sispedidos.domain.Pedido;
 
+
 public abstract class AbstractEmailService implements EmailService {
 
 	@Value("${default.sender}")
@@ -66,6 +67,7 @@ public abstract class AbstractEmailService implements EmailService {
     	SendOrderConfimationEmail(obj);
     }
 	}
+
 
 	private MimeMessage prepareMimeMessageFromPedido(Pedido obj) throws MessagingException {
 		MimeMessage mimeMessage  = javaMailSender.createMimeMessage();

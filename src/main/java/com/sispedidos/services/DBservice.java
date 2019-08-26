@@ -20,6 +20,7 @@ import com.sispedidos.domain.PagamentoComCartao;
 import com.sispedidos.domain.Pedido;
 import com.sispedidos.domain.Produto;
 import com.sispedidos.domain.enums.EstadoPagamento;
+import com.sispedidos.domain.enums.Perfil;
 import com.sispedidos.domain.enums.TipoCliente;
 import com.sispedidos.repository.CategoriaRepository;
 import com.sispedidos.repository.CidadeRepository;
@@ -126,6 +127,10 @@ public void instantiateTestDatabase() throws ParseException {
 	
 	Cliente cli1 = new Cliente(null, "Maria Silva", "ronaldo100timo@gmail.com", "7171112", TipoCliente.PESSOAFISICA, pe.encode("123") );
 	cli1.getTelefones().addAll(Arrays.asList("7171717", "727171717"));
+	
+	Cliente cli2 = new Cliente(null, "Ana Costa", "nelio.iftm@gmail.com", "31628382740", TipoCliente.PESSOAFISICA, pe.encode("123"));
+	cli2.getTelefones().addAll(Arrays.asList("93883321", "34252625"));
+	cli2.addPerfil(Perfil.ADMIN);
 	
 	Endereco e1 = new Endereco(null, "Rua Flores", "300", "Apto 303", "Jardim", "3848484", cli1, c1 );
 	Endereco e2 = new Endereco(null, "Avenida Matos", "105", "Sala 800", "Centro", "2828237343", cli1,c2);
