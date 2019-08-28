@@ -14,11 +14,14 @@ import org.springframework.stereotype.Service;
 import com.sispedidos.domain.Cidade;
 import com.sispedidos.domain.Cliente;
 import com.sispedidos.domain.Endereco;
+import com.sispedidos.domain.enums.Perfil;
 import com.sispedidos.domain.enums.TipoCliente;
+import com.sispedidos.domain.security.UserSS;
 import com.sispedidos.dto.ClienteDTO;
 import com.sispedidos.dto.ClienteNewDTO;
 import com.sispedidos.repository.ClienteRepository;
 import com.sispedidos.repository.EnderecoRepository;
+import com.sispedidos.service.exceptions.AuthorizationException;
 import com.sispedidos.service.exceptions.ObjectNotFoundException;
 
 @Service
@@ -35,6 +38,12 @@ public class ClienteService {
 	
 	public Cliente find(Integer id) {
 
+		UserSS user = UserService.authenticated();
+		if (user==null || !user.hasRole(Perfil.ADMIN) && !id.equals(user.getId())) {
+			throw new AuthorizationException("Acesso negado");
+		}
+		
+	
 		Optional<Cliente> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Cliente.class.getName()));
